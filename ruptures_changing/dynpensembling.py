@@ -59,7 +59,7 @@ import numpy as np
 from ruptures.utils import sanity_check
 from ruptures.costs import cost_factory
 from ruptures.base import BaseCost, BaseEstimator
-from aggregations import selected_aggregation
+from ruptures_changing.aggregations import selected_aggregation
 
 
 class DynpEnsembling(BaseEstimator):

@@ -114,7 +114,7 @@ from scipy.signal import argrelmax
 from ruptures.base import BaseCost, BaseEstimator
 from ruptures.costs import cost_factory
 from ruptures.utils import unzip
-from ruptures.detection.aggregations import *
+from ruptures_changing.aggregations import selected_aggregation
 
 
 class WindowEnsembling(BaseEstimator):
