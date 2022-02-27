@@ -95,7 +95,7 @@ from ruptures.base import BaseCost, BaseEstimator
 from ruptures.costs import cost_factory
 from ruptures.utils import pairwise
 import numpy as np
-from ruptures.detection.aggregations import *
+from ruptures_changing.aggregations import selected_aggregation
 
 
 class BinsegEnsembling(BaseEstimator):
