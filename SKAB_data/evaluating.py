@@ -127,7 +127,7 @@ def evaluating_change_point(true, prediction, metric='nab', numenta_time=None):
                     slow_width = int(len(win_fault)/4)
 
                     if len(win_fault) + slow_width >= len(win_space):
-                        print(f'Intersection of the windows of too wide widths for dataset {name_of_dataset}')
+                        # print(f'Intersection of the windows of too wide widths for dataset {name_of_dataset}')
                         win_fault_slow = win_fault.copy()
                     else:
                         win_fault_slow= win_space[:len(win_fault)  +  slow_width]
