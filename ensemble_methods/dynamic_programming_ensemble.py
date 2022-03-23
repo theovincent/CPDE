@@ -17,7 +17,7 @@ class DynpEnsemble(Dynp):
     sum of errors is minimum.
     """
 
-    def __init__(self, model="l2", custom_cost=None, min_size=2, jump=5, params=None, ensembling=1):
+    def __init__(self, model="l2", custom_cost=None, min_size=2, jump=5, params=None, scale_aggregation=lambda array: array):
         """Creates a Dynp instance.
 
         Args:
@@ -28,7 +28,7 @@ class DynpEnsemble(Dynp):
             params (dict, optional): a dictionary of parameters for the cost instance.
         """
         super(DynpEnsemble, self).__init__(model, custom_cost, min_size, jump, params)
-        self.ensembling = ensembling
+        self.scale_aggregation = scale_aggregation
 
     @lru_cache(maxsize=None)
     def _seg(self, start, end, n_bkps):
@@ -89,5 +89,5 @@ class DynpEnsemble(Dynp):
             array = np.array([[sum([i[cost_number] for i in sub_pr.values()]) for cost_number in range(number_of_costs)] for sub_pr in sub_problems])
 
             # Find the optimal partition
-            return sub_problems[np.argmin(selected_aggregation(self.ensembling)(array))]
+            return sub_problems[np.argmin(self.scale_aggregation(array))]
             #---------NEW PART----------till here

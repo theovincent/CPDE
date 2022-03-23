@@ -1,4 +1,5 @@
 r"""Binary segmentation ensemble."""
+from cProfile import label
 from functools import lru_cache
 
 import numpy as np
@@ -12,7 +13,7 @@ class BinsegEnsemble(Binseg):
 
     """Binary segmentation."""
 
-    def __init__(self, model="l2", custom_cost=None, min_size=2, jump=5, params=None, ensembling=1):
+    def __init__(self, model="l2", custom_cost=None, min_size=2, jump=5, params=None, scale_aggregation=lambda array: array):
         """Initialize a Binseg instance.
 
         Args:
@@ -23,7 +24,7 @@ class BinsegEnsemble(Binseg):
             params (dict, optional): a dictionary of parameters for the cost instance.
         """
         super(BinsegEnsemble, self).__init__(model, custom_cost, min_size, jump, params)
-        self.ensembling = ensembling
+        self.scale_aggregation = scale_aggregation
 
 
     @lru_cache(maxsize=None)
@@ -39,7 +40,7 @@ class BinsegEnsemble(Binseg):
                 gain_list.append((gain, bkp))
         try:
             scores = [i[0] for i in gain_list]
-            gain, bkp = max(np.array([(-1)*selected_aggregation(self.ensembling)(np.array(scores)*(-1)), np.array(gain_list)[:,1]]).T, key=lambda x: x[0])
+            gain, bkp = max(np.array([(-1)*self.scale_aggregation(np.array(scores)*(-1)), np.array(gain_list)[:,1]]).T, key=lambda x: x[0])
         #---------NEW PART----------till here
         except ValueError:  # if empty sub_sampling
             return None, 0

@@ -16,7 +16,7 @@ class WindowEnsemble(Window):
     """Window sliding method."""
 
     def __init__(
-        self, width=100, model="l2", custom_cost=None, min_size=2, jump=5, params=None, ensembling=1
+        self, width=100, model="l2", custom_cost=None, min_size=2, jump=5, params=None, scale_aggregation=None
     ):
         """Instanciate with window length.
 
@@ -29,7 +29,7 @@ class WindowEnsemble(Window):
             params (dict, optional): a dictionary of parameters for the cost instance.`
         """
         super(WindowEnsemble, self).__init__(width, model, custom_cost, min_size, jump, params)
-        self.ensembling = ensembling
+        self.scale_aggregation = scale_aggregation
 
     def _seg(self, n_bkps=None, **kwargs):
         """Sequential peak search.
@@ -107,6 +107,6 @@ class WindowEnsemble(Window):
             gain = np.array(self.cost.error(start, end))
             gain -= np.array(self.cost.error(start, k)) + np.array(self.cost.error(k, end))
             score.append(gain)
-        self.score = selected_aggregation(self.ensembling)(np.array(score))
+        self.score = self.scale_aggregation(np.array(score))
         #---------NEW PART----------till here
         return self
