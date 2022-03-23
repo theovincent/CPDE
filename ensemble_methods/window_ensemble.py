@@ -7,9 +7,6 @@ from scipy.signal import argrelmax
 from ruptures.utils import unzip
 from ruptures.detection.window import Window
 
-from ruptures_changing.aggregations import selected_aggregation
-
-
 
 class WindowEnsemble(Window):
 

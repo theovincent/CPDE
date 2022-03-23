@@ -30,13 +30,13 @@ SCALING_AGGREGATION_INVESTIGATION = {
 
 # Scaling functions
 def minmax(array):
-    return (array - np.max(array, axis=0)) / (np.max(array, axis=0) - np.min(array, axis=0))
+    return (array - np.max(array, axis=0)) / (np.max(array, axis=0) - np.min(array, axis=0)  + 1e-8)
     
 def znorm(array):
-    return (array - np.mean(array, axis=0)) / np.std(array, axis=0)
+    return (array - np.mean(array, axis=0)) / (np.std(array, axis=0) + 1e-8)
     
 def minabs(array):
-    return array / abs(np.min(array, axis=0) + 0.001)
+    return array / abs(np.min(array, axis=0) + 1e-8)
     
 def rank(array):
     order = array.argsort(axis=0)

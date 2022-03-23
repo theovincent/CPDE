@@ -5,9 +5,6 @@ import numpy as np
 from ruptures.utils import sanity_check
 from ruptures.detection.dynp import Dynp
 
-from ruptures_changing.aggregations import selected_aggregation
-
-
 
 class DynpEnsemble(Dynp):
 

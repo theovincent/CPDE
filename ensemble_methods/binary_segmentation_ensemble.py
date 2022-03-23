@@ -6,8 +6,6 @@ import numpy as np
 
 from ruptures.detection.binseg import Binseg
 
-from ruptures_changing.aggregations import selected_aggregation
-
 
 class BinsegEnsemble(Binseg):
 
