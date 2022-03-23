@@ -36,9 +36,6 @@ def evaluating_change_point(true, prediction, metric='nab', numenta_time=None):
                 TP,TN,FP,FN = TP+TP_,TN+TN_,FP+FP_,FN+FN_       
     
         f1 = round(TP/(TP+(FN+FP)/2), 2)
-        print(f'False Alarm Rate {round(FP/(FP+TN)*100,2)} %' )
-        print(f'Missing Alarm Rate {round(FN/(FN+TP)*100,2)} %')
-        print(f'F1 metric {f1}')
         return f1
     
     def average_delay(detecting_boundaries, prediction):
@@ -65,8 +62,6 @@ def evaluating_change_point(true, prediction, metric='nab', numenta_time=None):
                 missing, detectHistory = missing+missing_, detectHistory+detectHistory_
 
         add = pd.Series(detectHistory).mean()
-        print('Average delay', add)
-        print(f'A number of missed CPs = {missing}')
         return add
     
     def evaluate_nab(detecting_boundaries, prediction, table_of_coef=None):
@@ -165,7 +160,6 @@ def evaluating_change_point(true, prediction, metric='nab', numenta_time=None):
         desc = ['Standart', 'LowFP', 'LowFN'] 
         for t, profile_name in enumerate(desc):
             results[profile_name] = round(100*(matrix[0,t]-matrix[1,t])/(matrix[2,t]-matrix[1,t]), 2)
-            print(profile_name,' - ', results[profile_name])
         
         return results
             
