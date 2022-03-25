@@ -5,7 +5,7 @@ from ruptures.base import BaseCost
 from ruptures.costs import NotEnoughPoints
 
 
-class CostEnsemble(BaseCost):    
+class CostEnsemble(BaseCost):
     r"""Cost ensemble."""
 
     model = "ensemble"
@@ -42,10 +42,9 @@ class CostEnsemble(BaseCost):
 
         for cost in self.costs:
             cost.fit(signal)
-           
+
         return self
-    
-    
+
     def error(self, start, end):
         """Return the approximation cost on the segment [start:end].
         Args:
@@ -59,7 +58,5 @@ class CostEnsemble(BaseCost):
         """
         if end - start < self.min_size:
             raise NotEnoughPoints
-        
-        return np.array([cost.error(start, end) for cost in self.costs])
 
-    
+        return np.array([cost.error(start, end) for cost in self.costs])

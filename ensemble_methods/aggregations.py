@@ -30,31 +30,42 @@ SCALING_AGGREGATION_INVESTIGATION = {
 
 # Scaling functions
 def minmax(array):
-    return (array - np.max(array, axis=0)) / (np.max(array, axis=0) - np.min(array, axis=0)  + 1e-8)
-    
+    return (array - np.max(array, axis=0)) / (
+        np.max(array, axis=0) - np.min(array, axis=0) + 1e-8
+    )
+
+
 def znorm(array):
     return (array - np.mean(array, axis=0)) / (np.std(array, axis=0) + 1e-8)
-    
+
+
 def minabs(array):
     return array / abs(np.min(array, axis=0) + 1e-8)
-    
+
+
 def rank(array):
     order = array.argsort(axis=0)
     ranks = order.argsort(axis=0)
     return ranks
 
+
 # Aggreation function
 def min_(array):
     return np.min(array, axis=1).T
 
+
 def sum_(array):
     return np.sum(array, axis=1).T
 
+
 def weightedsum(array, raw_array):
     min_array = np.min(raw_array, axis=0)
-    weights = (np.max(array, axis=0) - min_array) / (np.mean(array, axis=0) - min_array + 1e-8)
+    weights = (np.max(array, axis=0) - min_array) / (
+        np.mean(array, axis=0) - min_array + 1e-8
+    )
 
     return weights @ array.T
+
 
 def thresholdsum(array):
     threshold = np.mean(array, axis=0)
@@ -62,6 +73,6 @@ def thresholdsum(array):
     array[lower_threshold_indices] = 0
     return np.sum(array, axis=1).T
 
+
 def max_(array):
     return np.max(array, axis=1).T
-    
