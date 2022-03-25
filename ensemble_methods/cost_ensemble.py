@@ -10,7 +10,7 @@ class CostEnsemble(BaseCost):
 
     model = "ensemble"
 
-    def __init__(self, models, params):
+    def __init__(self, models, params={}):
         """Initialize the object.
 
         Args:
