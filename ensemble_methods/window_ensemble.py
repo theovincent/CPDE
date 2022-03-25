@@ -71,7 +71,7 @@ class WindowEnsemble(Window):
             gain = self.cost.error(start, end)
             gain -= self.cost.error(start, k) + self.cost.error(k, end)
             score.append(gain)
-            
+
         self.score = -1 * self.scale_aggregation(-1 * np.array(score))
         # ---------NEW PART----------till here
         return self

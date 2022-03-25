@@ -21,7 +21,6 @@ SCALING_AGGREGATION = {
     "Max_Znorm": lambda array: max_(znorm(array)),
     "Max_MinAbs": lambda array: max_(minabs(array)),
     "Max_Rank": lambda array: max_(rank(array)),
-
 }
 
 
