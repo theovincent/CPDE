@@ -38,7 +38,7 @@ class BinsegEnsemble(Binseg):
         self.scale_aggregation = scale_aggregation
 
     @lru_cache(maxsize=None)
-    def _single_bkp(self, start, end):
+    def single_bkp(self, start, end):
         """Return the optimal breakpoint of [start:end] (if it exists)."""
         segment_cost = self.cost.error(start, end)
         if any(np.isinf(segment_cost)) and any(segment_cost < 0):  # if cost is -inf
@@ -59,7 +59,7 @@ class BinsegEnsemble(Binseg):
                 np.array(
                     [
                         -1 * self.scale_aggregation(-1 * np.array(scores)),
-                        np.array(gain_list)[:, 1],
+                        np.array(gain_list, dtype=object)[:, 1],
                     ]
                 ).T,
                 key=lambda x: x[0],

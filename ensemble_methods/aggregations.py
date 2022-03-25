@@ -1,32 +1,29 @@
 import numpy as np
 
-SCALING_AGGREGATION_PAPER = {
+SCALING_AGGREGATION = {
+    "Min_Raw": lambda array: min_(array),
     "Min_MinMax": lambda array: min_(minmax(array)),
     "Min_Znorm": lambda array: min_(znorm(array)),
     "Min_MinAbs": lambda array: min_(minabs(array)),
     "Min_Rank": lambda array: min_(rank(array)),
+    "Sum_Raw": lambda array: sum_(array),
     "Sum_MinMax": lambda array: sum_(minmax(array)),
     "Sum_Znorm": lambda array: sum_(znorm(array)),
     "Sum_MinAbs": lambda array: sum_(minabs(array)),
     "Sum_Rank": lambda array: sum_(rank(array)),
+    "WeightedSum_Raw": lambda array: weightedsum(array, array),
     "WeightedSum_MinMax": lambda array: weightedsum(minmax(array), array),
     "WeightedSum_Znorm": lambda array: weightedsum(znorm(array), array),
     "WeightedSum_MinAbs": lambda array: weightedsum(minabs(array), array),
     "WeightedSum_Rank": lambda array: weightedsum(rank(array), array),
-    "ThresholdSum_MinMax": lambda array: thresholdsum(minmax(array)),
-    "ThresholdSum_Znorm": lambda array: thresholdsum(znorm(array)),
-    "ThresholdSum_MinAbs": lambda array: thresholdsum(minabs(array)),
-    "ThresholdSum_Rank": lambda array: thresholdsum(rank(array)),
+    "Max_Raw": lambda array: max_(array),
+    "Max_MinMax": lambda array: max_(minmax(array)),
+    "Max_Znorm": lambda array: max_(znorm(array)),
+    "Max_MinAbs": lambda array: max_(minabs(array)),
+    "Max_Rank": lambda array: max_(rank(array)),
+
 }
 
-SCALING_AGGREGATION_INVESTIGATION = {
-    "Min_MinMax": lambda array: min_(minmax(array)),
-    "Min_Raw": lambda array: min_(array),
-    "Max_MinMax": lambda array: max_(minmax(array)),
-    "Max_Raw": lambda array: max_(array),
-    "WeightedSum_MinMax": lambda array: weightedsum(minmax(array), array),
-    "WeightedSum_Raw": lambda array: weightedsum(array, array),
-}
 
 # Scaling functions
 def minmax(array):
@@ -65,13 +62,6 @@ def weightedsum(array, raw_array):
     )
 
     return weights @ array.T
-
-
-def thresholdsum(array):
-    threshold = np.mean(array, axis=0)
-    lower_threshold_indices = array > threshold
-    array[lower_threshold_indices] = 0
-    return np.sum(array, axis=1).T
 
 
 def max_(array):
