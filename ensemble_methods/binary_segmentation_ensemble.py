@@ -54,6 +54,9 @@ class BinsegEnsemble(Binseg):
                 )
                 gain_list.append((gain, bkp))
         try:
+            if len(gain_list) == 0:
+                raise ValueError
+                
             scores = [i[0] for i in gain_list]
             gain, bkp = max(
                 np.array(
