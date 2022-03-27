@@ -11,8 +11,8 @@ Issues fixed:
 - [Implementation details: (Win & Dynp) vs Binseg](https://github.com/YKatser/CPDE/issues/11)
 
 Two Jupyter Notebooks are provided to reproduce the results that are presented in the [Leaderboard for TEP benchmark](#leaderboard-for-tep-benchmark) and the [Leaderboard for SKAB](#leaderboard-for-skab). They can be directly launched in Google Colab from here:
-- <a href="https://colab.research.google.com/github/theovincent/CPDE/blob/make_ipynb_working/TEP_experiments.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> for TEP dataset.
-- <a href="https://colab.research.google.com/github/theovincent/CPDE/blob/make_ipynb_working/SKAB_experiments.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> for SKAB dataset
+- <a href="https://colab.research.google.com/github/theovincent/CPDE/blob/master/TEP_experiments.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> for TEP dataset.
+- <a href="https://colab.research.google.com/github/theovincent/CPDE/blob/master/SKAB_experiments.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> for SKAB dataset
 
 The *search methods* (CPD algorithms) developped in this repository are extensions of the [*ruptures*](https://github.com/deepcharles/ruptures) python library. The *cost functions* used for ensemble models are:
 - ar(1)
