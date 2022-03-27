@@ -4,6 +4,12 @@
 
 __This repository is a fork from the [original code](https://github.com/YKatser/CPDE) coming along the paper cited in the [Citation](#citation) section. It aims at cleaning the code, fixing some issues that were pointed out in the original repository and providing new experiments.__
 
+Issues fixed:
+- [Mistake: Cost New](https://github.com/YKatser/CPDE/issues/8)
+- [Mistake: Cost functions - Linear VS RBF](https://github.com/YKatser/CPDE/issues/9)
+- [Mistake: ar(1) vs ar(5) in Win](https://github.com/YKatser/CPDE/issues/10)
+- [Implementation details: (Win & Dynp) vs Binseg](https://github.com/YKatser/CPDE/issues/11)
+
 Two Jupyter Notebooks are provided to reproduce the results that are presented in the [Leaderboard for TEP benchmark](#leaderboard-for-tep-benchmark) and the [Leaderboard for SKAB](#leaderboard-for-skab). They can be directly launched in Google Colab from here:
 - <a href="https://colab.research.google.com/github/theovincent/CPDE/blob/make_ipynb_working/TEP_experiments.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> for TEP dataset.
 - <a href="https://colab.research.google.com/github/theovincent/CPDE/blob/make_ipynb_working/SKAB_experiments.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a> for SKAB dataset
